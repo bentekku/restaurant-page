@@ -1,124 +1,69 @@
+import nav, { logo, menu, contact } from "./nav.js";
+import homepageComponent from "./homepage.js";
+import menuComponent from "./menu.js";
+import contactComponent from "./contact.js";
+
 import "./style.css";
-import heroimg from "./closeup_shot_of_a_sizzling_plate_of_biryani.jpg";
 
-function generateHomePageComponents() {
-  const pageWrapper = document.createElement("div");
-  pageWrapper.classList.add("main");
+const main = document.createElement("div");
+main.classList.add("main");
 
-  const nav = document.createElement("nav");
-  const navElementsWrapper = document.createElement("ul");
+let currentPage = "homepage";
 
-  const navElementLeftWrapper = document.createElement("div");
-  navElementLeftWrapper.classList.add("nav-left");
+// page generation
+function pageGen() {
+  main.appendChild(nav());
 
-  const navLogo = document.createElement("li");
-  navLogo.textContent = "munch";
+  menu.addEventListener("click", () => {
+    currentPage = "menu";
+  });
+  contact.addEventListener("click", () => {
+    currentPage = "contact";
+  });
+  logo.addEventListener("click", () => {
+    currentPage = "homepage";
+  });
 
-  const navElementRightWrapper = document.createElement("div");
-  navElementRightWrapper.classList.add("nav-right");
+  if (currentPage === "homepage") {
+    main.appendChild(homepageComponent());
 
-  const navMenu = document.createElement("li");
-  navMenu.textContent = "Menu";
+    menu.classList.remove("active-side-link");
+    contact.classList.remove("active-side-link");
+  } else if (currentPage === "menu") {
+    main.appendChild(menuComponent());
 
-  const navAbout = document.createElement("li");
-  navAbout.textContent = "About";
+    menu.classList.add("active-side-link");
+    contact.classList.remove("active-side-link");
+  } else if (currentPage === "contact") {
+    main.appendChild(contactComponent());
 
-  const navContactUs = document.createElement("li");
-  navContactUs.textContent = "Contact Us";
+    contact.classList.add("active-side-link");
+    menu.classList.remove("active-side-link");
+  }
 
-  const heroWrapper = document.createElement("div");
-  heroWrapper.setAttribute("id", "hero_wrapper");
+  footerGen();
 
-  const heroImageWrapper = document.createElement("div");
-  heroImageWrapper.setAttribute("id", "hero_imageWrapper");
-
-  const heroImage = new Image();
-  heroImage.setAttribute("id", "hero_image");
-  heroImage.src = heroimg;
-
-  const heroImgBlur = document.createElement("div");
-  heroImgBlur.setAttribute("id", "hero_imageBlur");
-
-  const heroText = document.createElement("p");
-  heroText.setAttribute("id", "hero_text");
-  heroText.textContent = `Discover the Vibrant Flavors of India\nExperience a Culinary Journey like No Other`;
-
-  const footer = document.createElement("footer");
-  const linkedIn_Ico = document.createElement("img");
-  linkedIn_Ico.setAttribute("id", "linkedIn_ico");
-
-  const gitHub_Ico = document.createElement("img");
-  gitHub_Ico.setAttribute("id", "gitHub_ico");
-
-  combineHomePageComponents(
-    pageWrapper,
-    nav,
-    navElementsWrapper,
-    navElementLeftWrapper,
-    navLogo,
-    navElementRightWrapper,
-    navMenu,
-    navAbout,
-    navContactUs,
-    heroWrapper,
-    heroImageWrapper,
-    heroImage,
-    heroImgBlur,
-    heroText,
-    footer,
-    linkedIn_Ico,
-    gitHub_Ico
-  );
-
-  return pageWrapper;
+  document.body.append(main);
 }
 
-function combineHomePageComponents(
-  main,
-  nav_bar,
-  nav_ele,
-  nav_left,
-  nav_logo,
-  nav_right,
-  nav_menu,
-  nav_about,
-  nav_contactUs,
-  hero_wrapper,
-  hero_imageWrapper,
-  hero_img,
-  hero_imgBlur,
-  hero_txt,
-  foot,
-  linkd_ico,
-  gitHub_ico
-) {
-  nav_left.appendChild(nav_logo);
-  nav_right.appendChild(nav_menu);
-  nav_right.appendChild(nav_about);
-  nav_right.appendChild(nav_contactUs);
+// footer generation
+function footerGen() {
+  const foot = document.createElement("footer");
+  const foot_linkdIn = new Image();
+  foot_linkdIn.src = "./linkedin-svgrepo-com.svg";
+  const foot_gitHub = new Image();
+  foot_gitHub.src = "./github-142-svgrepo-com.svg";
 
-  nav_ele.appendChild(nav_left);
-  nav_ele.appendChild(nav_right);
+  foot.appendChild(foot_linkdIn);
+  foot.appendChild(foot_gitHub);
 
-  nav_bar.appendChild(nav_ele);
-
-  hero_imageWrapper.appendChild(hero_img);
-  hero_imageWrapper.appendChild(hero_imgBlur);
-
-  hero_wrapper.appendChild(hero_imageWrapper);
-  hero_wrapper.appendChild(hero_txt);
-
-  foot.appendChild(linkd_ico);
-  foot.appendChild(gitHub_ico);
-
-  main.appendChild(nav_bar);
-  main.appendChild(hero_wrapper);
   main.appendChild(foot);
-
-  return main;
 }
+
+pageGen();
 
 // waiting for the whole DOM to be loaded to proceed further with node appending
-document.addEventListener("DOMContentLoaded", function () {
-  document.body.appendChild(generateHomePageComponents());
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   nav();
+//   document.body.appendChild(homepageComponent());
+// });
