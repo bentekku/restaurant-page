@@ -1,12 +1,12 @@
-const navBar = document.createElement("nav");
-const navLeft = document.createElement("div");
-const navRight = document.createElement("div");
-
 export const logo = document.createElement("p");
 export const menu = document.createElement("p");
 export const contact = document.createElement("p");
 
 export default function navGen() {
+  const navBar = document.createElement("nav");
+  const navLeft = document.createElement("div");
+  const navRight = document.createElement("div");
+
   navLeft.classList.add("nav-left");
   navRight.classList.add("nav-right");
 
@@ -14,10 +14,7 @@ export default function navGen() {
   logo.setAttribute("id", "nav_logo");
 
   menu.textContent = "Menu";
-  menu.setAttribute("id", "nav_menu");
-
   contact.textContent = "Contact Us";
-  contact.setAttribute("id", "nav_contact");
 
   return combineComponents(navBar, navLeft, navRight, logo, menu, contact);
 }

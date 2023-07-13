@@ -6,6 +6,15 @@
 
 /* https://huemint.com/website-magazine/#palette=faf9f5-d4f8df-a06175-19a19d */
 
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500;1,600&family=Raleway&display=swap");
+
+:root {
+  --text-main: #262121;
+  --text-n-bg: #fffffd;
+  --bg-main: #ffce2f;
+  --accent-n-button: #fd97af;
+}
+
 *,
 *::after,
 *::before {
@@ -22,11 +31,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Playfair Display", serif;
+
+  background-color: var(--text-n-bg);
 }
 
 .main {
-  height: 1200px;
-  width: 1080px;
+  height: 710px;
+  width: 1140px;
 
   display: flex;
   flex-direction: column;
@@ -34,33 +46,40 @@ body {
   align-items: center;
 }
 
+nav,
+.content,
+footer {
+  background-color: var(--bg-main);
+}
+
 nav {
   height: 10%;
   width: 100%;
-  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  background-color: blueviolet;
+  align-items: flex-start;
 }
 
 #nav_logo {
+  margin-left: 1rem;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.2rem;
   cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 .nav-right {
+  margin-right: 2.25rem;
+  margin-top: 0.8rem;
   text-align: end;
   color: rgb(54, 54, 54);
+  font-family: "Raleway", sans-serif;
 }
 
 .nav-right > p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
-  width: 5rem;
-  /* color: rgb(54, 54, 54); */
+  font-weight: 500;
 }
 
 .nav-right > p:hover {
@@ -68,23 +87,91 @@ nav {
 }
 
 .nav-right > p:not(:last-child) {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .content {
-  height: 80%;
+  height: 85%;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
+  font-family: "Raleway", sans-serif;
 
-  background-color: darkseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.content p {
+.content div {
   padding: 1rem 3rem;
+}
+
+.content div ul li {
+  font-size: 1rem;
+}
+
+.content div ul li:not(:first-child) {
+  margin-top: 3rem;
 }
 
 .content h1 {
   margin-bottom: 2rem;
+}
+
+.menu {
+  height: 85%;
+  width: 100%;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  padding: 2rem;
+}
+
+.menu h1 {
+  color: var(--text-n-bg);
+}
+
+.menu p {
+  font-size: 1rem;
+}
+
+.menu img {
+  height: 540px;
+  width: auto;
+}
+
+.menu #item_1_img {
+  height: 660px;
+  width: auto;
+}
+
+.menu .item {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  gap: 2rem;
+}
+
+.menu .item-price {
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-style: italic;
+
+  font-family: "Playfair Display", serif;
+  font-family: "Raleway", sans-serif;
+}
+
+.menu .item .item-deetsWrapper {
+  font-size: 0.5rem;
+}
+
+.content-wrapper {
+  height: 85%;
+  width: 100%;
 }
 
 .active-side-link {
@@ -92,27 +179,19 @@ nav {
 }
 
 footer {
-  height: 10%;
+  height: 5%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-
-  background-color: aquamarine;
+  gap: 1.2rem;
 }
 
-/* ABOUT PAGE */
-/* .about { */
-/* display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start; */
-
-/* justify-content: flex-start;
-  align-items: flex-start;
-  gap: 4rem;
-} */
+footer img {
+  height: 1.32rem;
+  width: 1.32rem;
+  cursor: pointer;
+}
 
 h1 {
   font-size: 2.5rem;
