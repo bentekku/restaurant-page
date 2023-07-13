@@ -1,9 +1,9 @@
 import item_1_imgLoc from "./strawberry-milkshake.png";
 import item_2_imgLoc from "./mint-milkshake.png";
 
+export const menuContent = document.createElement("div");
 export default function menuGen() {
-  const menuWrapper = document.createElement("div");
-  menuWrapper.classList.add("menu");
+  menuContent.classList.add("menu");
 
   const item_1 = document.createElement("div");
   item_1.classList.add("item");
@@ -18,16 +18,12 @@ export default function menuGen() {
 
   const item_1_descrp = document.createElement("p");
   item_1_descrp.innerHTML = `<br>
-  Our refreshing Strawberry Milkshake is a classic favorite that strikes the perfect balance between creamy and fruity. Made with the freshest, locally-sourced strawberries and high-quality milk, this milkshake is a treat for the senses.
+  Experience the perfect balance of creamy and fruity with our classic Strawberry Milkshake. Made with fresh, locally-sourced strawberries and high-quality milk, this revitalizing treat is a sensory delight.
   <br><br>
-  As you take a sip, you'll immediately be greeted with the sweet aroma of strawberries. Savor the rich and creamy texture, as you indulge in the delicate blend of fresh, ripe strawberries and ice-cold milk. The refreshing taste will leave you feeling revitalized and invigorated.
+  Savor the sweet aroma and rich texture as you indulge in the refreshing blend of ripe strawberries and ice-cold milk. Perfect as a guilt-free midday snack or dessert, it's also a great source of calcium and protein. Crafted with love by our experienced baristas, each sip transports you to pure bliss.
   <br><br>
-  Perfect as a midday snack or a dessert, our Strawberry Milkshake is the perfect drink for any day. It's also an excellent source of calcium and protein, so you can indulge guilt-free.
-  <br><br>
-  Prepared with love and care by our experienced baristas, every sip of this milkshake will transport you to a world of pure bliss. You'll taste the dedication and passion that goes into creating every drink, making each visit to our cafe a memorable one.
-  <br><br>
-  Whether you are a fan of classic flavors or love to experiment with new ones, our Strawberry Milkshake is a must-try. Visit us today at me.Shake to experience the magic and leave your taste buds begging for more!
-  Milkshake in a mason jar that has no branding on it and has a handle, garnished with choco-chips and broken bits of kitkat, drizzled with melted chocolate and powdered sugar on top`;
+  Visit us at me.Shake and discover why our Strawberry Milkshake is an unforgettable must-try. Enjoy it in a handle-less mason jar garnished with choco-chips, bits of Kitkat, melted chocolate, and powdered sugar on top.
+  `;
 
   const item_1_prodImg = new Image();
   item_1_prodImg.src = item_1_imgLoc;
@@ -53,15 +49,12 @@ export default function menuGen() {
 
   const item_2_descrp = document.createElement("p");
   item_2_descrp.innerHTML = `<br>
-  Indulge in the cool and refreshing flavors of our Mint Ice Cream Milkshake. This delightful treat combines the creamy goodness of premium mint ice cream with a touch of sweetness, creating a harmonious blend that will captivate your taste buds.
+  Indulge in the cool and refreshing flavors of our Mint Ice Cream Milkshake. This delightful treat combines premium mint ice cream with a touch of sweetness, creating a harmonious blend that instantly cools and refreshes your palate.
   <br><br>
-  As you take your first sip, you'll be greeted with a burst of minty freshness that instantly cools and refreshes your palate. The smooth and velvety texture of the milkshake adds a luxurious element, making each sip a moment of pure indulgence.
+  Crafted with the finest ingredients, each sip offers a luxurious experience of pure indulgence. Topped with whipped cream and chocolate shavings, our Mint Ice Cream Milkshake is a treat for all your senses.
   <br><br>
-  Our Mint Ice Cream Milkshake is crafted using only the finest ingredients. We source the highest quality mint ice cream and blend it together with just the right amount of milk to create the perfect consistency. Every ingredient is carefully chosen to ensure that each milkshake is a true masterpiece.
-  <br><br>
-  Served with a dollop of whipped cream on top and a sprinkle of chocolate shavings, our Mint Ice Cream Milkshake not only tastes incredible but also looks like a work of art. It's a treat for all the senses, from the enticing aroma to the beautiful presentation.
-  <br><br>
-  Whether you're looking to satisfy your sweet tooth, beat the heat, or simply treat yourself to a delightful dessert, our Mint Ice Cream Milkshake is the perfect choice. Visit us at me.Shake and experience the perfect balance of minty freshness, creaminess, and sweetness in every sip.`;
+  Visit us at me.Shake and savor the perfect balance of minty freshness, creaminess, and sweetness in every sip.
+`;
 
   const item_2_prodImg = new Image();
   item_2_prodImg.src = item_2_imgLoc;
@@ -74,8 +67,8 @@ export default function menuGen() {
   item_2.appendChild(item_2_prodImg);
   item_2.appendChild(item_2_deetsWrapper);
 
-  menuWrapper.appendChild(item_1);
-  menuWrapper.appendChild(item_2);
+  menuContent.append(item_1);
+  menuContent.append(item_2);
 
-  return menuWrapper;
+  return menuContent;
 }

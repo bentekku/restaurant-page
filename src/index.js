@@ -1,14 +1,13 @@
 import nav, { logo, menu, contact } from "./nav.js";
-import homepageComponent from "./homepage.js";
-import menuComponent from "./menu.js";
-import contactComponent from "./contact.js";
-
+import homepageComponent, { homeContent } from "./homepage.js";
+import menuComponent, { menuContent } from "./menu.js";
+import contactComponent, { contactContent } from "./contact.js";
 import linkedInLoc from "./linkedin-svgrepo-com.svg";
 import gitHubLoc from "./github-142-svgrepo-com.svg";
 
 import "./style.css";
 
-let currentPage = "menu";
+let currentPage = "homepage";
 
 const main = document.createElement("div");
 main.classList.add("main");
@@ -23,46 +22,64 @@ function pageGen() {
   menu.addEventListener("click", () => {
     currentPage = "menu";
     pageChange();
-
-    console.log("you clicked MENU");
   });
   contact.addEventListener("click", () => {
     currentPage = "contact";
     pageChange();
-
-    console.log("you clicked CONTACT");
   });
   logo.addEventListener("click", () => {
     currentPage = "homepage";
     pageChange();
-
-    console.log("you clicked HOMEPAGE");
   });
-
   pageChange();
-
   footerGen();
 
   document.body.append(main);
 }
 
 // changing content of page based upon the current page
+// displaying all the page contents all together, and then hiding the ones not need to be shown
 function pageChange() {
+  // checking whether the contentWrapper has no child
+  // if true, all the page contents would be added and homeContent would be displayed
+  // doing so prevents multiple children of a page displaying all together
+  if (!contentWrapper.innerHTML) {
+    contentWrapper.appendChild(homepageComponent());
+    contentWrapper.appendChild(menuComponent());
+    contentWrapper.appendChild(contactComponent());
+
+    homeContent.classList.remove("disable");
+  }
+
   if (currentPage === "homepage") {
-    contentWrapper.append(homepageComponent());
+    homeContent.classList.remove("disable");
 
-    menu.classList.remove("active-side-link");
-    contact.classList.remove("active-side-link");
+    menuContent.classList.add("disable");
+    contactContent.classList.add("disable");
+
+    // reverting the color change for both nav link
+    menu.classList.remove("active-link");
+    contact.classList.remove("active-link");
   } else if (currentPage === "menu") {
-    contentWrapper.append(menuComponent());
+    menuContent.classList.remove("disable");
 
-    menu.classList.add("active-side-link");
-    contact.classList.remove("active-side-link");
+    homeContent.classList.add("disable");
+    contactContent.classList.add("disable");
+
+    // changing color of the 'menu' nav link to darker shade
+    // and reverting the color change for other nav link
+    menu.classList.add("active-link");
+    contact.classList.remove("active-link");
   } else if (currentPage === "contact") {
-    contentWrapper.append(contactComponent());
+    contactContent.classList.remove("disable");
 
-    contact.classList.add("active-side-link");
-    menu.classList.remove("active-side-link");
+    homeContent.classList.add("disable");
+    menuContent.classList.add("disable");
+
+    // changing color of the 'contact' nav link to darker shade
+    // and reverting the color change for other nav link
+    contact.classList.add("active-link");
+    menu.classList.remove("active-link");
   }
 }
 
