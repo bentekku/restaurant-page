@@ -1,6 +1,6 @@
 # Restaurant Page
 
-This is a simple restaurant page project developed using HTML, CSS, and JavaScript. The project aims to showcase a responsive website for a restaurant, featuring different sections such as the home page, menu, contact information, and about section.
+This is a simple restaurant page project developed using HTML, CSS, JavaScript, and bundled together with Webpack. The project aims to showcase a responsive website for a restaurant, featuring different sections such as the home page, menu and contact information.
 
 ![Restaurant Page Preview](./preview.png)
 
@@ -53,7 +53,7 @@ To view the restaurant page locally, follow these steps:
   ```
 9.  Build the assets:
   ```bash
-        npm run build
+      npm run build
   ```
 13.  Open the `index.html` file in your preferred web browser.
 
